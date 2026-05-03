@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.4</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.7.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -22,9 +22,9 @@
         .header h1 { margin: 0; font-size: 1.5em; color: var(--ava-gold); }
         .header p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.8; }
 
-        /* 導航欄 */
-        .nav-bar { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow-x: auto; }
-        .nav-item { padding: 15px 10px; flex: 1; text-align: center; font-size: 0.9em; font-weight: bold; color: #666; cursor: pointer; white-space: nowrap; }
+        /* 導航欄 (支援橫向滑動) */
+        .nav-bar { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        .nav-item { padding: 15px 15px; flex: 0 0 auto; text-align: center; font-size: 0.95em; font-weight: bold; color: #666; cursor: pointer; }
         .nav-item.active { color: var(--ava-blue); border-bottom: 3px solid var(--ava-gold); }
 
         .container { padding: 20px 15px; max-width: 650px; margin: 0 auto; }
@@ -32,27 +32,11 @@
         .card-body { padding: 20px; }
         .card h2 { color: var(--ava-blue); font-size: 1.2em; border-left: 4px solid var(--ava-gold); padding-left: 10px; margin-top: 0; }
         
-        /* 主題入口網格 */
-        .portal-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
-        .portal-card { background: white; border: 2px solid #eee; border-left: 6px solid var(--ava-gold); border-radius: 12px; padding: 25px 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.03); }
-        .portal-card:active { background: #fdfaf4; border-color: var(--ava-gold); }
-        .portal-icon { font-size: 2.2em; margin-right: 20px; }
-        .portal-text h3 { color: var(--ava-blue); margin: 0 0 5px 0; font-size: 1.2em; }
-        .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
-
-        /* 圖片容器 - 自動適應比例，全圖顯示無黑邊、不裁切 */
-        .img-cover { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            border-radius: 8px; 
-            margin-top: 10px; 
-            border: 1px solid #ddd;
-            background-color: #eee;
-        }
+        /* 圖片容器 */
+        .img-cover { width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; margin-bottom: 15px; border: 1px solid #ddd; background-color: #eee; }
 
         /* 表格設計 */
-        table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 15px; border-radius: 8px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 15px; margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         th { background: var(--ava-blue); color: white; padding: 12px 10px; text-align: left; }
         td { border-bottom: 1px solid #eee; padding: 12px 10px; background: #fafafa; vertical-align: top; }
         tr:last-child td { border-bottom: none; }
@@ -63,58 +47,69 @@
 
         .product-list li { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
         .product-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-
-        .footer-tools { display: flex; gap: 10px; padding: 15px; background: white; position: fixed; bottom: 0; width: 100%; max-width: 650px; box-sizing: border-box; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-        .btn-tool { flex: 1; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; }
+        
+        /* 八大優勢網格 */
+        .adv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .adv-box { background: #f8f9fa; border: 1px solid #eee; padding: 15px; border-radius: 8px; font-size: 0.85em; text-align: center; }
+        .adv-box strong { color: var(--ava-blue); display: block; margin-bottom: 5px; font-size: 1.1em; }
     </style>
 </head>
 <body>
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.6.4</p>
+        <p>Asset Inheritance Planning System Pro v1.7.0</p>
     </header>
 
     <nav class="nav-bar">
         <div class="nav-item active" onclick="showPage('portal')">首頁入口</div>
         <div class="nav-item" onclick="showPage('invest')">投資移民</div>
         <div class="nav-item" onclick="showPage('work')">人才計劃</div>
-        <div class="nav-item" onclick="showPage('edu')">升學規劃</div>
+        <div class="nav-item" onclick="showPage('uni')">大學升學</div>
+        <div class="nav-item" onclick="showPage('ad')">副學位</div>
+        <div class="nav-item" onclick="showPage('school')">中小學</div>
         <div class="nav-item" onclick="showPage('brand')">關於AVA</div>
     </nav>
 
-    <main class="container" style="padding-bottom: 80px;">
+    <main class="container">
         
         <!-- 首頁：主題入口 -->
         <section id="portal-page" class="page">
             <div class="card">
                 <div class="card-body">
+                    <h2>香港身份 8 大絕對優勢</h2>
+                    <p style="font-size: 0.85em; color: #666;">取得香港身份，不僅是轉換居住地，更是為家族財富、子女教育與未來發展建立世界級的跳板。</p>
+                    <div class="adv-grid">
+                        <div class="adv-box"><strong>1. 簡單低稅制</strong><br>無遺產稅/增值稅，利得稅極低</div>
+                        <div class="adv-box"><strong>2. 自由貿易港</strong><br>資金自由進出，資產全球配置</div>
+                        <div class="adv-box"><strong>3. 通行便利</strong><br>護照免簽 170+ 國家及地區</div>
+                        <div class="adv-box"><strong>4. 頂尖教育資源</strong><br>12年免費公立教育，直通國際名校</div>
+                        <div class="adv-box"><strong>5. 先進醫療福利</strong><br>世界級醫療體系，極低公立費用</div>
+                        <div class="adv-box"><strong>6. 中西文化交融</strong><br>雙語環境，培養國際化視野</div>
+                        <div class="adv-box"><strong>7. 健全法律體系</strong><br>普通法制度，高度保障私有產權</div>
+                        <div class="adv-box"><strong>8. 背靠祖國機遇</strong><br>大灣區發展核心，無限商業潛力</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
                     <h2>選擇您的專屬規劃路徑</h2>
-                    <p style="font-size: 0.9em; color: #666; margin-bottom: 20px;">AVA 家族辦公室為您提供三大核心頂層設計模組，請選擇您目前最關注的領域：</p>
-                    
                     <div class="portal-grid">
                         <div class="portal-card" onclick="showPage('invest')">
-                            <div class="portal-icon">💼</div>
-                            <div class="portal-text">
-                                <h3>新資本投資者入境計劃 (CIES)</h3>
-                                <p>3,000萬資產配置，兼顧身份與財富傳承</p>
-                            </div>
+                            <div class="portal-text"><h3>💼 投資移民 (CIES)</h3><p>3,000萬資產配置，兼顧身份與財富傳承</p></div>
                         </div>
-
                         <div class="portal-card" onclick="showPage('work')">
-                            <div class="portal-icon">🎓</div>
-                            <div class="portal-text">
-                                <h3>優秀人才入境計劃</h3>
-                                <p>高才 / 專才 / 優才，專業人士快速落戶</p>
-                            </div>
+                            <div class="portal-text"><h3>🎓 優秀人才入境計劃</h3><p>高才 / 專才 / 優才，專業人士快速落戶</p></div>
                         </div>
-
-                        <div class="portal-card" onclick="showPage('edu')">
-                            <div class="portal-icon">🏫</div>
-                            <div class="portal-text">
-                                <h3>香港升學與教育規劃</h3>
-                                <p>中小學至大學對接，跳出內卷，直達名校</p>
-                            </div>
+                        <div class="portal-card" onclick="showPage('uni')">
+                            <div class="portal-text"><h3>🏫 大學升學</h3><p>DSE/華僑生/高考對比，直達港八大</p></div>
+                        </div>
+                        <div class="portal-card" onclick="showPage('ad')">
+                            <div class="portal-text"><h3>📈 副學位 (2+2)</h3><p>入讀名校黃金跳板，無縫銜接學士</p></div>
+                        </div>
+                        <div class="portal-card" onclick="showPage('school')">
+                            <div class="portal-text"><h3>🎒 香港中小學</h3><p>官津/直資/國際學校全方位解析</p></div>
                         </div>
                     </div>
                 </div>
@@ -126,69 +121,18 @@
             <div class="card">
                 <div class="card-body">
                     <h2>新資本投資者入境計劃 (CIES)</h2>
-                    
                     <img src="https://i.postimg.cc/76fG0sC9/IMG-5245.png" alt="香港投資移民" class="img-cover">
-                    
-                    <p style="margin-top: 15px;"><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
+                    <p><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
                     <p><strong>資金分配：</strong> 2,700 萬投入獲許資產 + 300 萬投入政府創新投資組合。</p>
                     
                     <h3>接受投資之獲許金融產品詳解：</h3>
                     <ul class="product-list">
-                        <li>
-                            <strong>房地產投資 (Real Estate)：</strong> <br>
-                            最新優化措施大幅放寬了門檻。住宅物業成交價須達 3,000 萬港元或以上（最高可將 1,000 萬港元計入投資總額）；非住宅物業（如商舖、寫字樓、工廈）則不設成交價下限，且投資上限提升至 1,500 萬港元，為高淨值客戶的在港資產配置提供了極大的靈活性。
-                        </li>
-                        <li>
-                            <strong>股票與債務證券 (Equities & Debt Securities)：</strong> <br>
-                            包括於香港聯交所上市並以港元或人民幣交易的股票；由特區政府、外匯基金、香港按揭證券有限公司等發行或全面保證的債券；以及特定認可機構發行的後償債項。
-                        </li>
-                        <li>
-                            <strong>存款證 (Certificates of Deposit)：</strong> <br>
-                            由《銀行業條例》認可機構發行，以港元或人民幣計價的存款證。到期日須距離購買日不少於 12 個月（此類別投資上限為 3,000 萬港元總額的 10%，即 300 萬港元上限）。
-                        </li>
-                        <li>
-                            <strong>合資格集體投資計劃 (Funds & REITs)：</strong> <br>
-                            涵蓋由香港證監會認可的各類基金，以及房地產投資信託基金 (REITs)。
-                        </li>
-                        <li>
-                            <strong>合資格投資相連壽險計劃 (ILAS)：</strong> <br>
-                            獲香港證監會認可並符合計劃規定的投連險產品。在實際規劃中，我們強烈建議客戶關注市場上歷史悠久、具備頂級信貸評級的大型國際保險集團（例如業界市佔率領先的「A」字頭龍頭機構）所推出的合資格產品。從客戶長遠的利益出發，這類頂級投連險不僅能一次性完全滿足 3,000 萬的投資移民合規要求，更重要的是它具備人壽保障的高槓桿與指定受益人功能，能有效對衝市場風險，為客戶實現「身份獲取、資產穩健增值、無爭議的跨世代財富傳承與強大資產防火牆」四位一體的頂層設計。
+                        <li><strong>房地產投資：</strong> 住宅成交價須達 3,000 萬港元或以上（最高可將 1,000 萬計入投資總額）；非住宅不設下限，投資上限為 1,500 萬。</li>
+                        <li><strong>股票與債務證券：</strong> 聯交所上市股票及特區政府/認可機構發行之債券。</li>
+                        <li><strong>合資格投資相連壽險計劃 (ILAS)：</strong> <br>
+                            我們強烈建議客戶關注歷史悠久、具備頂級信貸評級的大型國際保險集團（如業界市佔率領先的「A」字頭龍頭機構）所推出的投連險。從客戶長遠利益出發，這不僅完全滿足 3,000 萬的投資門檻，更具備人壽保障的高槓桿與指定受益人功能，有效對衝市場風險，為客戶實現「身份獲取、資產增值、跨代傳承與資產防火牆」四位一體的頂層設計。
                         </li>
                     </ul>
-
-                    <h3 style="margin-top: 30px;">五大獲許投資資產對比</h3>
-                    <table>
-                        <tr>
-                            <th style="width: 28%;">資產類別</th>
-                            <th>投資限制與特色</th>
-                            <th style="width: 25%;">計入上限</th>
-                        </tr>
-                        <tr>
-                            <td><strong>房地產</strong><br>(住宅/非住宅)</td>
-                            <td>住宅成交價需 ≥ 3000萬；<br>非住宅不設成交下限。</td>
-                            <td>住宅: 1000萬<br>非住宅: 1500萬</td>
-                        </tr>
-                        <tr>
-                            <td><strong>投連險 (ILAS)</strong><br><span style="color:var(--ava-gold);font-size:0.9em;">(推薦)</span></td>
-                            <td>具備人壽槓桿與傳承功能，可指定受益人，建立資產防火牆。</td>
-                            <td>無上限<br>(可佔滿 2700萬)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>股票及債券</strong></td>
-                            <td>聯交所上市，或港府認可。靈活性高，受市場波動影響。</td>
-                            <td>無上限<br>(可佔滿 2700萬)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>集體投資計劃</strong><br>(基金/REITs)</td>
-                            <td>需為證監會 (SFC) 認可之基金。</td>
-                            <td>無上限<br>(可佔滿 2700萬)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>存款證</strong></td>
-                            <td>到期日須距離購買日 ≥ 12個月，由認可機構發行。</td>
-                            <td>300萬<br>(總額之10%)</td>
-                        </tr>
-                    </table>
                 </div>
             </div>
         </section>
@@ -198,61 +142,196 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港人才計劃詳解</h2>
-                    
-                    <!-- 替換為要求的高才計劃連結 -->
                     <img src="https://i.postimg.cc/QdzHsg4R/IMG-5251.jpg" alt="人才計劃" class="img-cover">
                     
-                    <h3>三大計劃門檻對比</h3>
+                    <h3>三大人才計劃門檻對比</h3>
                     <table>
-                        <tr><th>項目</th><th>核心門檻</th><th>審批週期</th></tr>
-                        <tr><td><strong>高才通 (TTPS)</strong></td><td>A類: 年薪 250 萬+<br>B/C類: 百強名校學士</td><td>2-4個月</td></tr>
-                        <tr><td><strong>優才 (QMAS)</strong></td><td>12 項客觀準則滿足 6 項即可</td><td>9-12個月</td></tr>
-                        <tr><td><strong>專才 (ASMTP)</strong></td><td>具備學士學位並已獲香港企業聘用</td><td>3-6個月</td></tr>
+                        <tr>
+                            <th style="width: 25%;">計劃</th>
+                            <th>核心要求與門檻</th>
+                            <th style="width: 20%;">審批期</th>
+                        </tr>
+                        <tr>
+                            <td><strong>高才通<br>(TTPS)</strong></td>
+                            <td>A類: 全年收入達 250 萬港元以上<br>B類: 百強大學學士 + 3年工作經驗<br>C類: 5年內百強大學學士 (限額)</td>
+                            <td>2-4週</td>
+                        </tr>
+                        <tr>
+                            <td><strong>優才計劃<br>(QMAS)</strong></td>
+                            <td>無需提前獲聘。計分制（綜合計分制/成就計分制），達到 80 分及格線即可遞交。適合各行業菁英。</td>
+                            <td>6-9個月</td>
+                        </tr>
+                        <tr>
+                            <td><strong>專才計劃<br>(ASMTP)</strong></td>
+                            <td>必須提前獲得香港本地僱主聘用，具備學士學位或相關專業資格，薪酬須達市場水平。</td>
+                            <td>1-3個月</td>
+                        </tr>
                     </table>
+                    <p style="font-size: 0.8em; color: #888; margin-top: -10px;">*註明：【優才計劃-綜合計分制】滿分245分，及格分數為80分。評分標準涵蓋：年齡(最高30分)、學歷(最高70分)、工作經驗(最高75分)、人才清單(30分)、語文能力(最高20分)及家庭背景(最高20分)。畢業於國際知名院校或具備跨國公司經驗可獲額外加分。</p>
 
-                    <h3 style="margin-top: 20px;">身份規劃與落地流程：</h3>
-                    <div class="process-step"><strong>初步評估與方案制定</strong></div>
-                    <div class="process-step"><strong>準備文件並遞交申請</strong> (1-2個月處理期)</div>
-                    <div class="process-step"><strong>獲批與辦理香港身份證</strong></div>
-                    <div class="process-step"><strong>期滿續簽規劃</strong> (通常為 3+3 年)</div>
-                    <div class="process-step"><strong>累積滿 7 年申請永久居民身份</strong></div>
+                    <h3 style="margin-top: 20px;">身份落地與轉永居流程：</h3>
+                    <div class="process-step"><strong>首次獲批簽證：</strong> 高才(2年) / 優才(3年) / 專才(3年)</div>
+                    <div class="process-step"><strong>到港激活與辦理身份證：</strong> 獲批後需於規定時間內入境香港辦理香港居民身份證。</div>
+                    <div class="process-step"><strong>期滿續簽模式：</strong> <br>高才: 2+3+3年 (頂尖人才 2+6年)<br>優才/專才: 3+3+2年 (頂尖人才 3+5年)</div>
+                    <div class="process-step"><strong>申請永久居民：</strong> 連續通常居住滿 7 年，即可申請轉為香港永久性居民，並申領香港特區護照。</div>
                 </div>
             </div>
         </section>
 
-        <!-- 香港升學詳細資料 -->
-        <section id="edu-page" class="page" style="display:none;">
+        <!-- 大學升學 -->
+        <section id="uni-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    <h2>香港升學全階路徑</h2>
+                    <h2>大學升學與考試途徑</h2>
                     
-                    <!-- 替換為要求的升學計劃連結 -->
-                    <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="教育規劃" class="img-cover">
-                    
-                    <h3>中小學教育體系對比</h3>
+                    <h3>DSE vs 華僑生聯考 vs 高考對比</h3>
                     <table>
-                        <tr><th>學校類型</th><th>學費概覽</th><th>課程體系</th></tr>
-                        <tr><td>官立/津貼</td><td>全免</td><td>本地 DSE 課程</td></tr>
-                        <tr><td>直資學校</td><td>數千至數萬</td><td>DSE / 非本地課程</td></tr>
-                        <tr><td>私立/國際</td><td>較高昂</td><td>IB / A-Level / AP</td></tr>
+                        <tr>
+                            <th style="width: 25%;">考試類型</th>
+                            <th>香港 DSE</th>
+                            <th>華僑生聯考</th>
+                            <th>內地高考</th>
+                        </tr>
+                        <tr>
+                            <td><strong>考試難度</strong></td>
+                            <td>適中，知識點涵蓋面廣但深度較淺</td>
+                            <td>較低，約為內地初三至高一水平</td>
+                            <td>極高 (內卷嚴重)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>升學優勢</strong></td>
+                            <td>全球認可，港八大錄取率高達近40%，易入全球百強名校</td>
+                            <td>低分入讀內地 985/211 頂尖名校 (如400分即可申請)</td>
+                            <td>競爭激烈，考取頂尖大學難度極高</td>
+                        </tr>
+                        <tr>
+                            <td><strong>認可範圍</strong></td>
+                            <td>全球 300+ 所知名大學</td>
+                            <td>主要為內地 300+ 所高校</td>
+                            <td>主要為內地，部分海外高校承認</td>
+                        </tr>
                     </table>
 
-                    <h3 style="margin-top: 20px;">大學與高等教育入學途徑</h3>
+                    <h3 style="margin-top: 20px;">港八大對考生的入學要求</h3>
                     <ul>
-                        <li><strong>本科直錄：</strong> 憑高考成績、DSE 或國際考試成績直接申請港八大。</li>
-                        <li><strong>副學位「2+2」跳板：</strong> 適合高考未達頂尖分數的學生，先修讀 2 年副學位，銜接 2 年本科。</li>
-                        <li><strong>碩士深造 (Master)：</strong> 1年制授課型碩士，畢業後可獲 2 年 IANG 工作簽證。</li>
+                        <li><strong>對 DSE 考生：</strong> 享有「本地生」保護名額 (佔約80%)。一般最低門檻為「332A33」（中英達3級，數學2級，公民科達標，兩科選修達3級）。</li>
+                        <li><strong>對 高考 考生：</strong> 按「非本地生」競爭。通常要求高考總分達所屬省份的「一本線」(特招線) 以上，且英語單科成績需極其優異（通常要求 120-130分/150滿分以上），並需通過全英文面試。</li>
+                    </ul>
+
+                    <h3 style="margin-top: 20px;">香港八大名校特點</h3>
+                    <img src="https://i.postimg.cc/rsSgSF32/IMG-5252.jpg" alt="香港八大大學" class="img-cover">
+                    <ul>
+                        <li><strong>香港大學 (HKU)：</strong> 歷史最悠久，醫科、法學、建築、牙醫亞洲頂尖。</li>
+                        <li><strong>香港中文大學 (CUHK)：</strong> 獨特書院制，人文學科、商學及計算機科學極強。</li>
+                        <li><strong>香港科技大學 (HKUST)：</strong> 建校短但排名高，商學院及工程學科世界一流。</li>
+                        <li><strong>香港理工大學 (PolyU)：</strong> 實用性極強，酒店管理、護理、設計及工程畢業生極受歡迎。</li>
+                        <li><strong>香港城市大學 (CityU)：</strong> 排名躍升極快，商科、傳媒及全港唯一的獸醫學科。</li>
+                        <li><strong>香港浸會大學 (HKBU)：</strong> 傳理學院享有亞洲盛名，中醫藥學科領先。</li>
+                        <li><strong>嶺南大學 (LingnanU)：</strong> 亞洲博雅大學聯盟，推行小班教學，師生關係緊密。</li>
+                        <li><strong>香港教育大學 (EdUHK)：</strong> 專注師範教育，是香港教師的搖籃。</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 品牌頁面 (關於AVA) -->
+        <!-- 副學位 (2+2) -->
+        <section id="ad-page" class="page" style="display:none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2>副學位 (Associate Degree) 升學路徑</h2>
+                    <p>「副學位」包含<strong>副學士 (Associate Degree, AD)</strong> 及 <strong>高級文憑 (Higher Diploma, HD)</strong>，是香港教育體系中銜接學士學位的重要橋樑。</p>
+                    
+                    <h3>香港副學位 VS 內地大專</h3>
+                    <table>
+                        <tr>
+                            <th style="width: 30%;">對比項目</th>
+                            <th>香港副學位 (AD/HD)</th>
+                            <th>內地大專</th>
+                        </tr>
+                        <tr>
+                            <td><strong>升學導向</strong></td>
+                            <td>黃金跳板，專為銜接大學三年級設計。</td>
+                            <td>多為就業導向的終端學歷。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>升讀本科難度</strong></td>
+                            <td>「2+2」無縫銜接，憑內部 CGPA 直接升讀港八大。</td>
+                            <td>需參加競爭激烈的「專升本」統考。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>學位含金量</strong></td>
+                            <td>升讀後，畢業證書與高考直錄學生<strong>完全相同</strong>，無差別。</td>
+                            <td>專升本的畢業證書會特別註明「專科起點」。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>國際認可度</strong></td>
+                            <td>受國際認可，可直接銜接海外英美澳大學。</td>
+                            <td>海外認可度相對較低。</td>
+                        </tr>
+                    </table>
+
+                    <h3 style="margin-top: 20px;">升讀大學的絕對關鍵：CGPA (平均學分績點)</h3>
+                    <p>副學位學生升讀八大的成敗，完全取決於兩年內的 <strong>CGPA (Cumulative Grade Point Average)</strong> 及面試表現。一般而言：</p>
+                    <ul>
+                        <li><strong>CGPA 3.6 - 4.0：</strong> 極大機會獲港大 (HKU)、中大 (CUHK)、科大 (HKUST) 取錄。</li>
+                        <li><strong>CGPA 3.3 - 3.5：</strong> 穩入理大、城大、浸大等名校。</li>
+                        <li><strong>CGPA 3.0：</strong> 達到基本銜接政府資助 (UGC) 學位的門檻。</li>
+                    </ul>
+
+                    <h3 style="margin-top: 20px;">「2+2」完美升學路徑</h3>
+                    <div class="process-step"><strong>入學要求：</strong> 高考成績達二本線/本科線及英語達標；或 DSE 核心科達標。</div>
+                    <div class="process-step"><strong>修讀副學位 (2年)：</strong> 於香港八大附屬學院全英語環境修讀。</div>
+                    <div class="process-step"><strong>銜接學士 (2年)：</strong> 憑 CGPA 升讀八大本科的三年級 (Senior Year Admitted)。</div>
+                    <div class="process-step"><strong>獲得學位與 IANG 簽證：</strong> 畢業後獲取學士學位，並無條件獲批 2 年 IANG 簽證留港工作。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 中小學 -->
+        <section id="school-page" class="page" style="display:none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2>香港中小學教育體系解析</h2>
+                    <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="中小學教育" class="img-cover">
+                    <p>香港的中小學教育體系多元，家長可根據子女的性格、未來升學路徑（留港或出國）及經濟預算，選擇最合適的學校類別。</p>
+                    
+                    <h3>四大類別學校對比</h3>
+                    <table>
+                        <tr>
+                            <th style="width: 22%;">學校類別</th>
+                            <th style="width: 15%;">學費</th>
+                            <th>課程體系與特色</th>
+                        </tr>
+                        <tr>
+                            <td><strong>官立及<br>津貼學校</strong></td>
+                            <td>免費</td>
+                            <td><strong>本地 DSE 課程。</strong><br>由政府全資資助，統一派位。教學語言分中文(CEMI)及英文(EMI)。適合計劃長遠留港升學的學生。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>直資學校<br>(DSS)</strong></td>
+                            <td>中等<br>(數千至數萬)</td>
+                            <td><strong>本地 DSE / 國際課程 (如 IB)。</strong><br>收生及課程設計自主性高，資源豐富，面試錄取。兼具本地與國際視野，競爭非常激烈。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>私立學校</strong></td>
+                            <td>較高</td>
+                            <td><strong>多樣化課程。</strong><br>自負盈虧，校風嚴謹，很多私立小學有其「直屬」或「聯繫」中學，升學極具保障。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>國際學校</strong></td>
+                            <td>昂貴<br>(十萬至數十萬)</td>
+                            <td><strong>IB / A-Level / AP 等海外課程。</strong><br>全外語教學環境，培養批判性思維，無縫對接海外頂尖大學。申請通常需購買學校債券。</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 關於AVA -->
         <section id="brand-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
                     <h2>關於 AVA 家族辦公室</h2>
-                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-cover" style="border: 1px dashed var(--ava-gold);">
                     <p>AVA 家族辦公室總部位於香港，擁有超過 30 年的財富管理與架構設計經驗。我們專注為高淨值客戶提供從資產隔離、風險對沖到家族傳承的頂層設計。</p>
                     
                     <h3>五大核心業務重點：</h3>
@@ -269,11 +348,6 @@
 
     </main>
 
-    <div class="footer-tools">
-        <button class="btn-tool" style="background: var(--ava-gold); color: white;" onclick="alert('專屬 QR Code 產生中...')">分享首頁入口</button>
-        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.4)')">匯出規劃報告</button>
-    </div>
-
     <script>
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
@@ -284,6 +358,8 @@
             document.querySelectorAll('.nav-item').forEach(n => {
                 if(n.getAttribute('onclick').includes(pageId)) {
                     n.classList.add('active');
+                    // 讓導航列自動滾動至點擊的項目居中
+                    n.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
             });
             
