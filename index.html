@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JIG 留學及移民集團 | Asset Inheritance Planning System Pro v1.3.0</title>
+    <title>JIG 留學及移民集團 | Asset Inheritance Planning System Pro v1.3.1</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -16,9 +16,8 @@
         
         body { font-family: 'PingFang HK', 'Microsoft JhengHei', sans-serif; margin: 0; background: var(--bg-gray); color: #333; line-height: 1.6; }
         
-        /* 頂部標題與 AVA 浮水印 */
-        .header { background: var(--jig-blue); color: white; padding: 30px 20px; text-align: center; position: relative; overflow: hidden; }
-        .header::after { content: 'AVA'; position: absolute; top: 10px; right: 10px; font-size: 3em; opacity: 0.05; font-weight: bold; }
+        /* 頂部標題 */
+        .header { background: var(--jig-blue); color: white; padding: 30px 20px; text-align: center; }
         .header h1 { margin: 0; font-size: 1.5em; color: var(--jig-gold); }
         .header p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.8; }
 
@@ -32,6 +31,10 @@
         .card-body { padding: 20px; }
         .card h2 { color: var(--jig-blue); font-size: 1.2em; border-left: 4px solid var(--jig-gold); padding-left: 10px; margin-top: 0; }
         
+        /* 圖片佔位符樣式 */
+        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px dashed var(--jig-gold); }
+        .advantage-icon { width: 40px; height: 40px; border-radius: 50%; background: #eee; border: 1px dashed var(--jig-gold); flex-shrink: 0; margin-right: 15px; }
+
         /* 數據表格設計 */
         table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 10px; }
         th { background: var(--jig-blue); color: white; padding: 10px; text-align: left; }
@@ -41,6 +44,9 @@
         .process-step { border-left: 2px dashed var(--jig-gold); padding-left: 15px; margin-bottom: 10px; position: relative; }
         .process-step::before { content: '●'; position: absolute; left: -6px; top: 0; color: var(--jig-gold); }
 
+        .advantage-item { display: flex; align-items: start; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .advantage-item p { margin: 0; font-size: 0.9em; }
+
         .footer-tools { display: flex; gap: 10px; padding: 15px; background: white; position: fixed; bottom: 0; width: 100%; max-width: 650px; box-sizing: border-box; }
         .btn-tool { flex: 1; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; }
     </style>
@@ -49,7 +55,7 @@
 
     <header class="header">
         <h1>JIG 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.3.0</p>
+        <p>Asset Inheritance Planning System Pro v1.3.1</p>
     </header>
 
     <nav class="nav-bar">
@@ -66,9 +72,11 @@
             <div class="card">
                 <div class="card-body">
                     <h2>集團簡介與家族辦公室</h2>
-                    [span_0](start_span)<p>JIG 家族辦公室總部位於香港，擁有超過 30 年財富管理經驗，專注為高淨值客戶提供資產隔離與家族傳承方案[span_0](end_span)。</p>
-                    [span_1](start_span)<p>我們協助內地企業主規劃國際身份，拓展全球市場，並最大化稅務優惠，便利家族風險分散[span_1](end_span)。</p>
-                    [span_2](start_span)<h3>五大業務重點[span_2](end_span)：</h3>
+                    <p>JIG 家族辦公室總部位於香港，擁有超過 30 年財富管理經驗，專注為高淨值客戶提供資產隔離與家族傳承方案。</p>
+                    <p>我們協助內地企業主規劃國際身份，拓展全球市場，並最大化稅務優惠，便利家族風險分散。</p>
+                    <img src="jig_office_interior.jpg" alt="JIG 辦公室環境佔位圖片" class="img-placeholder">
+                    
+                    <h3>五大業務重點：</h3>
                     <ul>
                         <li><strong>資產隔離與風險管理：</strong> 降低外部不確定性對財富的影響。</li>
                         <li><strong>家族傳承與人才培養：</strong> 定制全球升學與教育路徑規劃。</li>
@@ -83,18 +91,62 @@
         <section id="identity-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    [span_3](start_span)<h2>香港身份優勢[span_3](end_span)</h2>
-                    <ul>
-                        <li><strong>營商與稅務：</strong> 全球最自由經濟體，個人所得稅最高 17%，企業最低 8.25%。</li>
-                        <li><strong>通行便利：</strong> 香港護照免簽 173 個國家及地區。</li>
-                        <li><strong>教育優勢：</strong> 12 年免費公立教育，子女可憑華僑生身份低分入讀 985/211。</li>
-                        <li><strong>社會福利：</strong> 醫療技術領先，公立醫院費用低廉。</li>
-                    </ul>
-                    [span_4](start_span)<h3>五大移民方法概覽[span_4](end_span)</h3>
+                    <h2>香港身份的八大優勢</h2>
+                    
+                    <div class="advantage-item">
+                        <img src="adv_tax_icon.png" alt="稅務優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>1. 簡單低稅制：</strong> 個人所得稅最高 17%，企業最低 8.25%，無增值稅、銷售稅、遺產稅。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_currency_icon.png" alt="貨幣優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>2. 自由貿易港 & 無外匯管制：</strong> 港元掛鈎美金，貨幣自由兌換，資產全球靈活配置。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_travel_icon.png" alt="通行優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>3. 通行便利：</strong> 特區護照免簽/落地簽 173 個國家及地區，環球公幹旅遊無障礙。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_education_icon.png" alt="教育優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>4. 頂尖教育資源：</strong> 12 年免費公立教育，子女可憑華僑生身份低分入讀 985/211 或直接升讀國際名校。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_medical_icon.png" alt="醫療優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>5. 先進醫療福利：</strong> 醫療技術領先，完善醫療體系，公立醫院費用低廉。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_culture_icon.png" alt="文化優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>6. 中西文化交融：</strong> 國際化城市環境，雙語溝通無障礙，孩子能更好適應國際氛圍。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_strategic_icon.png" alt="地理優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>7. 地理優勢背靠祖國：</strong> 聯通粵港澳大灣區發展機遇，商機無限。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <img src="adv_legal_icon.png" alt="法律優勢佔位圖" class="advantage-icon">
+                        <div>
+                            <p><strong>8. 健全法律體系：</strong> 行使普通法系，法治基礎穩健，保障商業和個人資產。</p>
+                        </div>
+                    </div>
+
+                    <h3>五大移民方法概覽</h3>
                     <table>
                         <tr><th>項目</th><th>核心門檻</th><th>週期</th></tr>
                         <tr><td>高才通</td><td>百強本科或年薪 250 萬+</td><td>2-4個月</td></tr>
-                        <tr><td>優才</td><td>12 項指標滿足 6 項即可</td><td>9-12個月</td></tr>
+                        <tr><td>優才</td><td>簡化後 12 指標滿足 6 項即可</td><td>9-12個月</td></tr>
                         <tr><td>專才</td><td>獲得香港企業聘用</td><td>3-6個月</td></tr>
                         <tr><td>進修</td><td>持有本科/大專學歷並獲錄取</td><td>1-3個月</td></tr>
                         <tr><td>投資移民</td><td>投資 3,000 萬港幣</td><td>3-6個月</td></tr>
@@ -106,10 +158,10 @@
         <section id="invest-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    [span_5](start_span)<h2>新資本投資者入境計劃 (CIES)[span_5](end_span)</h2>
+                    <h2>CIES 新資本投資者入境計劃</h2>
                     <p><strong>申請要求：</strong> 18 歲以上，資產證明需達 3,000 萬港元淨資產。</p>
                     <p><strong>資金分配：</strong> 2,700 萬投入獲許資產 + 300 萬投入政府投資組合。</p>
-                    [span_6](start_span)[span_7](start_span)<h3>接受投資之金融產品[span_6](end_span)[span_7](end_span)：</h3>
+                    <h3>接受投資之金融產品：</h3>
                     <ul>
                         <li><strong>房地產：</strong> 住宅成交需達 3,000 萬以上（計入上限 1,000 萬）；非住宅不限成交價（計入上限 1,500 萬）。</li>
                         <li><strong>金融資產：</strong> 聯交所上市股票、港幣/人民幣債券。</li>
@@ -123,7 +175,7 @@
         <section id="work-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    [span_8](start_span)<h2>人才計劃詳解與流程[span_8](end_span)</h2>
+                    <h2>人才計劃詳解與流程</h2>
                     <p><strong>高才通 (TTPS)：</strong> A類年薪 250 萬+；B類百強本科+3年經驗；C類五年內百強畢業生。</p>
                     <p><strong>專才 (ASMTP)：</strong> 具學士學位，已獲聘用，薪資需與市場持平。</p>
                     <p><strong>優才 (QMAS)：</strong> 綜合計分制簡化為 12 項準則，滿足 6 項即可申請。</p>
@@ -139,19 +191,19 @@
         <section id="edu-page" class="page" style="display:none;">
             <div class="card">
                 <div class="card-body">
-                    [span_9](start_span)[span_10](start_span)<h2>中小學教育體系[span_9](end_span)[span_10](end_span)</h2>
+                    <h2>中小學教育體系</h2>
                     <table>
                         <tr><th>類型</th><th>學費</th><th>學制/課程</th></tr>
                         <tr><td>官立/津貼</td><td>全免</td><td>本地 DSE 課程</td></tr>
                         <tr><td>直資</td><td>數千至數萬</td><td>DSE / 非本地課程</td></tr>
                         <tr><td>私立/國際</td><td>較高</td><td>IB / A-Level / AP</td></tr>
                     </table>
-                    [span_11](start_span)[span_12](start_span)[span_13](start_span)<h3>高等教育路徑[span_11](end_span)[span_12](end_span)[span_13](end_span)</h3>
+                    <h3>高等教育路徑</h3>
                     <ul>
                         <li><strong>副學位 (2+2)：</strong> 適合高考未達標學生，2年副學位後銜接2年本科。</li>
                         <li><strong>本科及碩士：</strong> 畢業後可獲 2 年 IANG 工簽留港。</li>
                     </ul>
-                    [span_14](start_span)<h3>港八大院校優勢[span_14](end_span)</h3>
+                    <h3>港八大院校優勢</h3>
                     <p>香港大學 (QS 11)、港中文 (QS 32)、港科技 (QS 44) 等 5 所大學位列全球百強。</p>
                 </div>
             </div>
@@ -161,7 +213,7 @@
 
     <div class="footer-tools">
         <button class="btn-tool" style="background: var(--jig-gold); color: white;" onclick="alert('QR Code 產生中...')">分享規劃</button>
-        <button class="btn-tool" style="background: var(--jig-blue); color: white;" onclick="alert('檔案匯出成功 (v1.3.0)')">匯出報告</button>
+        <button class="btn-tool" style="background: var(--jig-blue); color: white;" onclick="alert('檔案匯出成功 (v1.3.1)')">匯出報告</button>
     </div>
 
     <script>
