@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.9.0</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.10.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -22,10 +22,9 @@
         .header h1 { margin: 0; font-size: 1.5em; color: var(--ava-gold); }
         .header p { margin: 5px 0 0; font-size: 0.9em; opacity: 0.8; }
 
-        /* 導航欄 - 橫向滑動 */
-        .nav-bar { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-        .nav-item { padding: 15px 15px; flex: 0 0 auto; text-align: center; font-size: 0.9em; font-weight: bold; color: #666; cursor: pointer; }
-        .nav-item.active { color: var(--ava-blue); border-bottom: 3px solid var(--ava-gold); }
+        /* 導航欄 - 只保留首頁 */
+        .nav-bar { display: flex; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .nav-item { padding: 15px 15px; flex: 1; text-align: center; font-size: 1em; font-weight: bold; color: var(--ava-blue); cursor: pointer; border-bottom: 3px solid var(--ava-gold); }
 
         .container { padding: 20px 15px; max-width: 650px; margin: 0 auto; }
         .card { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); overflow: hidden; }
@@ -40,7 +39,7 @@
         .portal-text h3 { color: var(--ava-blue); margin: 0 0 5px 0; font-size: 1.2em; }
         .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
 
-        /* 圖片容器 */
+        /* 一般大圖片容器 */
         .img-cover { 
             width: 100%; 
             height: auto; 
@@ -52,10 +51,11 @@
             background-color: #eee;
         }
 
-        /* 身份優勢列表樣式 */
-        .id-item { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        /* 身份優勢列表樣式 (圖文並排) */
+        .id-item { display: flex; align-items: flex-start; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         .id-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .id-item p { margin-top: 10px; margin-bottom: 0; }
+        .id-icon { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; flex-shrink: 0; margin-right: 15px; border: 1px solid #eee; background-color: #fafafa; }
+        .id-text p { margin: 0; font-size: 0.9em; line-height: 1.6; color: #333; }
 
         /* 表格設計 */
         table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 15px; margin-bottom: 15px; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
@@ -77,18 +77,11 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.9.0</p>
+        <p>Asset Inheritance Planning System Pro v1.10.0</p>
     </header>
 
     <nav class="nav-bar">
-        <div class="nav-item active" onclick="showPage('portal')">首頁入口</div>
-        <div class="nav-item" onclick="showPage('identity')">身份優勢</div>
-        <div class="nav-item" onclick="showPage('invest')">投資移民</div>
-        <div class="nav-item" onclick="showPage('work')">人才計劃</div>
-        <div class="nav-item" onclick="showPage('uni')">大學升學</div>
-        <div class="nav-item" onclick="showPage('ad')">副學位</div>
-        <div class="nav-item" onclick="showPage('school')">中小學</div>
-        <div class="nav-item" onclick="showPage('brand')">關於AVA</div>
+        <div class="nav-item active" onclick="showPage('portal')">🏠 首頁入口</div>
     </nav>
 
     <main class="container">
@@ -158,41 +151,55 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港身份 7 大絕對優勢</h2>
-                    <p>取得香港身份，不僅是轉換居住地，更是為資產保護與跨代發展作出的最佳頂層設計：</p>
+                    <p style="margin-bottom: 20px;">取得香港身份，不僅是轉換居住地，更是為資產保護與跨代發展作出的最佳頂層設計：</p>
                     
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/hGzhGCfC/IMG-5273.jpg" alt="簡單低稅制" class="img-cover">
-                        <p><strong>1. 簡單低稅制：</strong> 個人所得稅最高 17%，企業最低 8.25%。無遺產稅、無增值稅、無銷售稅，最大化保留家族財富。</p>
+                        <img src="https://i.postimg.cc/hGzhGCfC/IMG-5273.jpg" alt="簡單低稅制" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>1. 簡單低稅制：</strong> 個人所得稅最高 17%，企業最低 8.25%。無遺產稅、無增值稅、無銷售稅，最大化保留家族財富。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/8CJsCyjL/IMG-5281.jpg" alt="無外匯管制" class="img-cover">
-                        <p><strong>2. 無外匯管制：</strong> 港元與美元掛鈎，資金可自由兌換及進出，實現全球資產靈活配置。</p>
+                        <img src="https://i.postimg.cc/8CJsCyjL/IMG-5281.jpg" alt="無外匯管制" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>2. 無外匯管制：</strong> 港元與美元掛鈎，資金可自由兌換及進出，實現全球資產靈活配置。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/wBy3BW70/IMG-5276.jpg" alt="出國免簽" class="img-cover">
-                        <p><strong>3. 出國免簽：</strong> 香港特區護照享有免簽證或落地簽證前往 170 多個國家和地區的待遇，環球公幹無阻礙。</p>
+                        <img src="https://i.postimg.cc/wBy3BW70/IMG-5276.jpg" alt="出國免簽" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>3. 出國免簽：</strong> 香港特區護照享有免簽證或落地簽證前往 170 多個國家和地區的待遇，環球公幹無阻礙。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/nLjMLdCk/IMG-5277.jpg" alt="頂尖教育資源" class="img-cover">
-                        <p><strong>4. 頂尖教育資源：</strong> 實行 12 年免費公立教育。子女可憑華僑生身份低分考入內地 985/211 名校，或憑 DSE 直接升讀海外頂尖學府。</p>
+                        <img src="https://i.postimg.cc/nLjMLdCk/IMG-5277.jpg" alt="頂尖教育資源" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>4. 頂尖教育資源：</strong> 實行 12 年免費公立教育。子女可憑華僑生身份低分考入內地 985/211 名校，或憑 DSE 直接升讀海外頂尖學府。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/nLjMLdCk/IMG-5277.jpg" alt="頂級醫療團隊" class="img-cover">
-                        <p><strong>5. 頂級醫療團隊：</strong> 香港擁有世界級的醫療技術與完善體系，取得身份後即可享受極低收費的公立醫院服務。</p>
+                        <img src="https://i.postimg.cc/nLjMLdCk/IMG-5277.jpg" alt="頂級醫療團隊" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>5. 頂級醫療團隊：</strong> 香港擁有世界級的醫療技術與完善體系，取得身份後即可享受極低收費的公立醫院服務。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/25b35HVd/IMG-5279.jpg" alt="一國兩制" class="img-cover">
-                        <p><strong>6. 一國兩制：</strong> 實行普通法制度，法治基礎穩健，高度保障個人權利、私有產權與商業運作的安全。</p>
+                        <img src="https://i.postimg.cc/25b35HVd/IMG-5279.jpg" alt="一國兩制" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>6. 一國兩制：</strong> 實行普通法制度，法治基礎穩健，高度保障個人權利、私有產權與商業運作的安全。</p>
+                        </div>
                     </div>
 
                     <div class="id-item">
-                        <img src="https://i.postimg.cc/7LGbLBfg/IMG-5280.jpg" alt="大灣區機會" class="img-cover">
-                        <p><strong>7. 大灣區機會：</strong> 背靠祖國，享有粵港澳大灣區及CEPA的各項專屬政策與商業發展紅利。</p>
+                        <img src="https://i.postimg.cc/7LGbLBfg/IMG-5280.jpg" alt="大灣區機會" class="id-icon">
+                        <div class="id-text">
+                            <p><strong>7. 大灣區機會：</strong> 背靠祖國，享有粵港澳大灣區及CEPA的各項專屬政策與商業發展紅利。</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -458,42 +465,13 @@
             </div>
         </section>
 
-        <!-- 關於AVA -->
-        <section id="brand-page" class="page" style="display:none;">
-            <div class="card">
-                <div class="card-body">
-                    <h2>關於 AVA 家族辦公室</h2>
-                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-cover" style="border: 1px dashed var(--ava-gold);">
-                    <p>AVA 家族辦公室總部位於香港，擁有超過 30 年的財富管理與架構設計經驗。我們專注為高淨值客戶提供從資產隔離、風險對沖到家族傳承的頂層設計。</p>
-                    
-                    <h3>五大核心業務重點：</h3>
-                    <ul>
-                        <li><strong>資產隔離與風險管理</strong></li>
-                        <li><strong>家族傳承與人才培養</strong></li>
-                        <li><strong>財富管理與投資策劃</strong></li>
-                        <li><strong>商業企劃與股權設計</strong></li>
-                        <li><strong>周邊配套服務 (房地產與禮賓)</strong></li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <script>
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             
             document.getElementById(pageId + '-page').style.display = 'block';
-            
-            document.querySelectorAll('.nav-item').forEach(n => {
-                if(n.getAttribute('onclick').includes(pageId)) {
-                    n.classList.add('active');
-                    // 自動橫向捲動導航列至點擊位置
-                    n.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
-            });
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
