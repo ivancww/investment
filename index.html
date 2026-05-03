@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.2</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.4</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -40,11 +40,11 @@
         .portal-text h3 { color: var(--ava-blue); margin: 0 0 5px 0; font-size: 1.2em; }
         .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
 
-        /* 圖片容器 - 完美填滿無黑邊 */
+        /* 圖片容器 - 自動適應比例，全圖顯示無黑邊、不裁切 */
         .img-cover { 
             width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
+            height: auto; 
+            display: block; 
             border-radius: 8px; 
             margin-top: 10px; 
             border: 1px solid #ddd;
@@ -72,7 +72,7 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.6.2</p>
+        <p>Asset Inheritance Planning System Pro v1.6.4</p>
     </header>
 
     <nav class="nav-bar">
@@ -199,7 +199,8 @@
                 <div class="card-body">
                     <h2>香港人才計劃詳解</h2>
                     
-                    <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="人才計劃" class="img-cover">
+                    <!-- 替換為要求的高才計劃連結 -->
+                    <img src="https://i.postimg.cc/QdzHsg4R/IMG-5251.jpg" alt="人才計劃" class="img-cover">
                     
                     <h3>三大計劃門檻對比</h3>
                     <table>
@@ -225,7 +226,8 @@
                 <div class="card-body">
                     <h2>香港升學全階路徑</h2>
                     
-                    <img src="https://i.postimg.cc/QdzHsg4R/IMG-5251.jpg" alt="教育規劃" class="img-cover">
+                    <!-- 替換為要求的升學計劃連結 -->
+                    <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="教育規劃" class="img-cover">
                     
                     <h3>中小學教育體系對比</h3>
                     <table>
@@ -269,7 +271,7 @@
 
     <div class="footer-tools">
         <button class="btn-tool" style="background: var(--ava-gold); color: white;" onclick="alert('專屬 QR Code 產生中...')">分享首頁入口</button>
-        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.2)')">匯出規劃報告</button>
+        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.4)')">匯出規劃報告</button>
     </div>
 
     <script>
