@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.5.0</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -16,7 +16,7 @@
         
         body { font-family: 'PingFang HK', 'Microsoft JhengHei', sans-serif; margin: 0; background: var(--bg-gray); color: #333; line-height: 1.6; }
         
-        /* 頂部標題與 AVA 浮水印 */
+        /* 頂部標題 */
         .header { background: var(--ava-blue); color: white; padding: 30px 20px; text-align: center; position: relative; overflow: hidden; }
         .header::after { content: 'AVA'; position: absolute; top: 10px; right: 10px; font-size: 3em; opacity: 0.05; font-weight: bold; }
         .header h1 { margin: 0; font-size: 1.5em; color: var(--ava-gold); }
@@ -32,7 +32,7 @@
         .card-body { padding: 20px; }
         .card h2 { color: var(--ava-blue); font-size: 1.2em; border-left: 4px solid var(--ava-gold); padding-left: 10px; margin-top: 0; }
         
-        /* 主題入口網格設計 */
+        /* 主題入口網格 */
         .portal-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
         .portal-card { background: white; border: 2px solid #eee; border-left: 6px solid var(--ava-gold); border-radius: 12px; padding: 25px 20px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; box-shadow: 0 4px 8px rgba(0,0,0,0.03); }
         .portal-card:active { background: #fdfaf4; border-color: var(--ava-gold); }
@@ -40,11 +40,17 @@
         .portal-text h3 { color: var(--ava-blue); margin: 0 0 5px 0; font-size: 1.2em; }
         .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
 
-        /* 圖片佔位符與表格 */
-        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 10px; }
-        th { background: var(--ava-blue); color: white; padding: 10px; text-align: left; }
-        td { border-bottom: 1px solid #eee; padding: 10px; background: #fafafa; }
+        /* 圖片/Iframe 容器 */
+        .iframe-container { width: 100%; height: 350px; border-radius: 8px; overflow: hidden; margin-top: 10px; border: 1px solid #ddd; background: #eee; }
+        .iframe-container iframe { width: 100%; height: 100%; border: none; }
+        
+        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px dashed var(--ava-gold); }
+
+        /* 表格設計 */
+        table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 15px; border-radius: 8px; overflow: hidden; }
+        th { background: var(--ava-blue); color: white; padding: 12px 10px; text-align: left; }
+        td { border-bottom: 1px solid #eee; padding: 12px 10px; background: #fafafa; vertical-align: top; }
+        tr:last-child td { border-bottom: none; }
         
         .badge { background: #fdf5e6; color: #b8860b; padding: 3px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; display: inline-block; }
         .process-step { border-left: 2px dashed var(--ava-gold); padding-left: 15px; margin-bottom: 10px; position: relative; }
@@ -61,7 +67,7 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.5.0</p>
+        <p>Asset Inheritance Planning System Pro v1.6.0</p>
     </header>
 
     <nav class="nav-bar">
@@ -115,8 +121,11 @@
             <div class="card">
                 <div class="card-body">
                     <h2>新資本投資者入境計劃 (CIES)</h2>
-                    <!-- 已加插 Google Drive 圖片直連 -->
-                    <img src="https://drive.google.com/uc?export=view&id=1-0ucYsUH9VjEasPncN6lWD-hZdsQ2hcA" alt="香港投資移民" class="img-placeholder">
+                    
+                    <!-- 使用 Iframe 嵌入 Google Drive 預覽，解決圖片不顯示問題 -->
+                    <div class="iframe-container">
+                        <iframe src="https://drive.google.com/file/d/1-0ucYsUH9VjEasPncN6lWD-hZdsQ2hcA/preview"></iframe>
+                    </div>
                     
                     <p style="margin-top: 15px;"><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
                     <p><strong>資金分配：</strong> 2,700 萬投入獲許資產 + 300 萬投入政府創新投資組合。</p>
@@ -144,6 +153,40 @@
                             獲香港證監會認可並符合計劃規定的投連險產品。在實際規劃中，我們強烈建議客戶關注市場上歷史悠久、具備頂級信貸評級的大型國際保險集團（例如業界市佔率領先的「A」字頭龍頭機構）所推出的合資格產品。從客戶長遠的利益出發，這類頂級投連險不僅能一次性完全滿足 3,000 萬的投資移民合規要求，更重要的是它具備人壽保障的高槓桿與指定受益人功能，能有效對衝市場風險，為客戶實現「身份獲取、資產穩健增值、無爭議的跨世代財富傳承與強大資產防火牆」四位一體的頂層設計。
                         </li>
                     </ul>
+
+                    <h3 style="margin-top: 30px;">五大獲許投資資產對比</h3>
+                    <table>
+                        <tr>
+                            <th style="width: 28%;">資產類別</th>
+                            <th>投資限制與特色</th>
+                            <th style="width: 25%;">計入上限</th>
+                        </tr>
+                        <tr>
+                            <td><strong>房地產</strong><br>(住宅/非住宅)</td>
+                            <td>住宅成交價需 ≥ 3000萬；<br>非住宅不設成交下限。</td>
+                            <td>住宅: 1000萬<br>非住宅: 1500萬</td>
+                        </tr>
+                        <tr>
+                            <td><strong>投連險 (ILAS)</strong><br><span style="color:var(--ava-gold);font-size:0.9em;">(推薦)</span></td>
+                            <td>具備人壽槓桿與傳承功能，可指定受益人，建立資產防火牆。</td>
+                            <td>無上限<br>(可佔滿 2700萬)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>股票及債券</strong></td>
+                            <td>聯交所上市，或港府認可。靈活性高，受市場波動影響。</td>
+                            <td>無上限<br>(可佔滿 2700萬)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>集體投資計劃</strong><br>(基金/REITs)</td>
+                            <td>需為證監會 (SFC) 認可之基金。</td>
+                            <td>無上限<br>(可佔滿 2700萬)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>存款證</strong></td>
+                            <td>到期日須距離購買日 ≥ 12個月，由認可機構發行。</td>
+                            <td>300萬<br>(總額之10%)</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </section>
@@ -153,7 +196,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港人才計劃詳解</h2>
-                    <img src="ava_talent_banner.jpg" alt="人才計劃佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
+                    <img src="ava_talent_banner.jpg" alt="人才計劃佔位圖片" class="img-placeholder">
                     
                     <h3>三大計劃門檻對比</h3>
                     <table>
@@ -164,10 +207,10 @@
                     </table>
 
                     <h3 style="margin-top: 20px;">身份規劃與落地流程：</h3>
-                    <div class="process-step"><strong>初步評估與方案制定</strong> (為客戶匹配最適合路徑)</div>
+                    <div class="process-step"><strong>初步評估與方案制定</strong></div>
                     <div class="process-step"><strong>準備文件並遞交申請</strong> (1-2個月處理期)</div>
-                    <div class="process-step"><strong>獲批與辦理香港身份證</strong> (正式啟動在港身份)</div>
-                    <div class="process-step"><strong>期滿續簽規劃</strong> (協助達成續簽條件，通常為 3+3 年)</div>
+                    <div class="process-step"><strong>獲批與辦理香港身份證</strong></div>
+                    <div class="process-step"><strong>期滿續簽規劃</strong> (通常為 3+3 年)</div>
                     <div class="process-step"><strong>累積滿 7 年申請永久居民身份</strong></div>
                 </div>
             </div>
@@ -178,7 +221,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港升學全階路徑</h2>
-                    <img src="ava_edu_banner.jpg" alt="教育規劃佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
+                    <img src="ava_edu_banner.jpg" alt="教育規劃佔位圖片" class="img-placeholder">
                     
                     <h3>中小學教育體系對比</h3>
                     <table>
@@ -191,8 +234,8 @@
                     <h3 style="margin-top: 20px;">大學與高等教育入學途徑</h3>
                     <ul>
                         <li><strong>本科直錄：</strong> 憑高考成績、DSE 或國際考試成績直接申請港八大。</li>
-                        <li><strong>副學位「2+2」跳板：</strong> 適合高考未達頂尖分數的學生，先修讀 2 年副學位，成績達標後無縫銜接 2 年本科，獲取與直錄完全相同的學士學位。</li>
-                        <li><strong>碩士深造 (Master)：</strong> 1年制授課型碩士，畢業後可無條件獲取 2 年 IANG 工作簽證，是低成本留港的黃金路徑。</li>
+                        <li><strong>副學位「2+2」跳板：</strong> 適合高考未達頂尖分數的學生，先修讀 2 年副學位，銜接 2 年本科。</li>
+                        <li><strong>碩士深造 (Master)：</strong> 1年制授課型碩士，畢業後可獲 2 年 IANG 工作簽證。</li>
                     </ul>
                 </div>
             </div>
@@ -203,7 +246,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>關於 AVA 家族辦公室</h2>
-                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
+                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-placeholder">
                     <p>AVA 家族辦公室總部位於香港，擁有超過 30 年的財富管理與架構設計經驗。我們專注為高淨值客戶提供從資產隔離、風險對沖到家族傳承的頂層設計。</p>
                     
                     <h3>五大核心業務重點：</h3>
@@ -222,7 +265,7 @@
 
     <div class="footer-tools">
         <button class="btn-tool" style="background: var(--ava-gold); color: white;" onclick="alert('專屬 QR Code 產生中...')">分享首頁入口</button>
-        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.5.0)')">匯出規劃報告</button>
+        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.0)')">匯出規劃報告</button>
     </div>
 
     <script>
