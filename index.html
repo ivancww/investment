@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.4.0</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.5.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -41,7 +41,7 @@
         .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
 
         /* 圖片佔位符與表格 */
-        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px dashed var(--ava-gold); }
+        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; }
         table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 10px; }
         th { background: var(--ava-blue); color: white; padding: 10px; text-align: left; }
         td { border-bottom: 1px solid #eee; padding: 10px; background: #fafafa; }
@@ -49,6 +49,9 @@
         .badge { background: #fdf5e6; color: #b8860b; padding: 3px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; display: inline-block; }
         .process-step { border-left: 2px dashed var(--ava-gold); padding-left: 15px; margin-bottom: 10px; position: relative; }
         .process-step::before { content: '●'; position: absolute; left: -6px; top: 0; color: var(--ava-gold); }
+
+        .product-list li { margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #f0f0f0; }
+        .product-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         .footer-tools { display: flex; gap: 10px; padding: 15px; background: white; position: fixed; bottom: 0; width: 100%; max-width: 650px; box-sizing: border-box; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
         .btn-tool { flex: 1; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; }
@@ -58,7 +61,7 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.4.0</p>
+        <p>Asset Inheritance Planning System Pro v1.5.0</p>
     </header>
 
     <nav class="nav-bar">
@@ -79,7 +82,6 @@
                     <p style="font-size: 0.9em; color: #666; margin-bottom: 20px;">AVA 家族辦公室為您提供三大核心頂層設計模組，請選擇您目前最關注的領域：</p>
                     
                     <div class="portal-grid">
-                        <!-- 投資移民入口 -->
                         <div class="portal-card" onclick="showPage('invest')">
                             <div class="portal-icon">💼</div>
                             <div class="portal-text">
@@ -88,7 +90,6 @@
                             </div>
                         </div>
 
-                        <!-- 人才計劃入口 -->
                         <div class="portal-card" onclick="showPage('work')">
                             <div class="portal-icon">🎓</div>
                             <div class="portal-text">
@@ -97,7 +98,6 @@
                             </div>
                         </div>
 
-                        <!-- 香港升學入口 -->
                         <div class="portal-card" onclick="showPage('edu')">
                             <div class="portal-icon">🏫</div>
                             <div class="portal-text">
@@ -115,20 +115,33 @@
             <div class="card">
                 <div class="card-body">
                     <h2>新資本投資者入境計劃 (CIES)</h2>
-                    <img src="ava_cies_banner.jpg" alt="投資移民佔位圖片" class="img-placeholder">
-                    <p><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
+                    <!-- 已加插 Google Drive 圖片直連 -->
+                    <img src="https://drive.google.com/uc?export=view&id=1-0ucYsUH9VjEasPncN6lWD-hZdsQ2hcA" alt="香港投資移民" class="img-placeholder">
+                    
+                    <p style="margin-top: 15px;"><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
                     <p><strong>資金分配：</strong> 2,700 萬投入獲許資產 + 300 萬投入政府創新投資組合。</p>
                     
-                    <h3>接受投資之金融產品：</h3>
-                    <ul>
-                        <li><strong>房地產：</strong> 住宅成交需達 3,000 萬以上（計入上限 1,000 萬）；非住宅不設下限（計入上限 1,500 萬）。</li>
-                        <li><strong>金融資產：</strong> 聯交所上市股票、港幣/人民幣債券。</li>
-                        <li><strong>存款證：</strong> 銀行發行（上限 300 萬）。</li>
+                    <h3>接受投資之獲許金融產品詳解：</h3>
+                    <ul class="product-list">
                         <li>
-                            <strong>合資格投資相連壽險 (ILAS)：</strong> <br>
-                            <span style="color: var(--ava-blue); font-size: 0.9em; display: block; margin-top: 5px; padding: 8px; background: #f0f4f8; border-radius: 5px;">
-                                <strong>💡 客戶視角考量：</strong> 選擇 ILAS 不僅能完全符合移民投資門檻，更能從客戶長遠利益出發，利用壽險槓桿為家庭建立資產防火牆，對沖市場風險，並指定受益人實現定向財富傳承，一筆資金同時滿足「身份+增值+保障」三大需求。
-                            </span>
+                            <strong>房地產投資 (Real Estate)：</strong> <br>
+                            最新優化措施大幅放寬了門檻。住宅物業成交價須達 3,000 萬港元或以上（最高可將 1,000 萬港元計入投資總額）；非住宅物業（如商舖、寫字樓、工廈）則不設成交價下限，且投資上限提升至 1,500 萬港元，為高淨值客戶的在港資產配置提供了極大的靈活性。
+                        </li>
+                        <li>
+                            <strong>股票與債務證券 (Equities & Debt Securities)：</strong> <br>
+                            包括於香港聯交所上市並以港元或人民幣交易的股票；由特區政府、外匯基金、香港按揭證券有限公司等發行或全面保證的債券；以及特定認可機構發行的後償債項。
+                        </li>
+                        <li>
+                            <strong>存款證 (Certificates of Deposit)：</strong> <br>
+                            由《銀行業條例》認可機構發行，以港元或人民幣計價的存款證。到期日須距離購買日不少於 12 個月（此類別投資上限為 3,000 萬港元總額的 10%，即 300 萬港元上限）。
+                        </li>
+                        <li>
+                            <strong>合資格集體投資計劃 (Funds & REITs)：</strong> <br>
+                            涵蓋由香港證監會認可的各類基金，以及房地產投資信託基金 (REITs)。
+                        </li>
+                        <li>
+                            <strong>合資格投資相連壽險計劃 (ILAS)：</strong> <br>
+                            獲香港證監會認可並符合計劃規定的投連險產品。在實際規劃中，我們強烈建議客戶關注市場上歷史悠久、具備頂級信貸評級的大型國際保險集團（例如業界市佔率領先的「A」字頭龍頭機構）所推出的合資格產品。從客戶長遠的利益出發，這類頂級投連險不僅能一次性完全滿足 3,000 萬的投資移民合規要求，更重要的是它具備人壽保障的高槓桿與指定受益人功能，能有效對衝市場風險，為客戶實現「身份獲取、資產穩健增值、無爭議的跨世代財富傳承與強大資產防火牆」四位一體的頂層設計。
                         </li>
                     </ul>
                 </div>
@@ -140,7 +153,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港人才計劃詳解</h2>
-                    <img src="ava_talent_banner.jpg" alt="人才計劃佔位圖片" class="img-placeholder">
+                    <img src="ava_talent_banner.jpg" alt="人才計劃佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
                     
                     <h3>三大計劃門檻對比</h3>
                     <table>
@@ -165,7 +178,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港升學全階路徑</h2>
-                    <img src="ava_edu_banner.jpg" alt="教育規劃佔位圖片" class="img-placeholder">
+                    <img src="ava_edu_banner.jpg" alt="教育規劃佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
                     
                     <h3>中小學教育體系對比</h3>
                     <table>
@@ -190,7 +203,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>關於 AVA 家族辦公室</h2>
-                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-placeholder">
+                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-placeholder" style="border: 1px dashed var(--ava-gold);">
                     <p>AVA 家族辦公室總部位於香港，擁有超過 30 年的財富管理與架構設計經驗。我們專注為高淨值客戶提供從資產隔離、風險對沖到家族傳承的頂層設計。</p>
                     
                     <h3>五大核心業務重點：</h3>
@@ -209,31 +222,25 @@
 
     <div class="footer-tools">
         <button class="btn-tool" style="background: var(--ava-gold); color: white;" onclick="alert('專屬 QR Code 產生中...')">分享首頁入口</button>
-        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.4.0)')">匯出規劃報告</button>
+        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.5.0)')">匯出規劃報告</button>
     </div>
 
     <script>
         function showPage(pageId) {
-            // 隱藏所有頁面
             document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-            // 移除導航欄的啟動狀態
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             
-            // 顯示目標頁面
             document.getElementById(pageId + '-page').style.display = 'block';
             
-            // 由於首頁的卡片點擊和頂部導航都會觸發此函數，需確保導航列的狀態同步更新
             document.querySelectorAll('.nav-item').forEach(n => {
                 if(n.getAttribute('onclick').includes(pageId)) {
                     n.classList.add('active');
                 }
             });
             
-            // 每次切換頁面自動回到頂部
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // PWA 更新控制
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js').then(reg => {
