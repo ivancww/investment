@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.0</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.6.2</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -40,11 +40,16 @@
         .portal-text h3 { color: var(--ava-blue); margin: 0 0 5px 0; font-size: 1.2em; }
         .portal-text p { color: #666; margin: 0; font-size: 0.85em; }
 
-        /* 圖片/Iframe 容器 */
-        .iframe-container { width: 100%; height: 350px; border-radius: 8px; overflow: hidden; margin-top: 10px; border: 1px solid #ddd; background: #eee; }
-        .iframe-container iframe { width: 100%; height: 100%; border: none; }
-        
-        .img-placeholder { background: #eee; width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; border: 1px dashed var(--ava-gold); }
+        /* 圖片容器 - 完美填滿無黑邊 */
+        .img-cover { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            margin-top: 10px; 
+            border: 1px solid #ddd;
+            background-color: #eee;
+        }
 
         /* 表格設計 */
         table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin-top: 15px; border-radius: 8px; overflow: hidden; }
@@ -67,7 +72,7 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.6.0</p>
+        <p>Asset Inheritance Planning System Pro v1.6.2</p>
     </header>
 
     <nav class="nav-bar">
@@ -122,10 +127,7 @@
                 <div class="card-body">
                     <h2>新資本投資者入境計劃 (CIES)</h2>
                     
-                    <!-- 使用 Iframe 嵌入 Google Drive 預覽，解決圖片不顯示問題 -->
-                    <div class="iframe-container">
-                        <iframe src="https://drive.google.com/file/d/1-0ucYsUH9VjEasPncN6lWD-hZdsQ2hcA/preview"></iframe>
-                    </div>
+                    <img src="https://i.postimg.cc/76fG0sC9/IMG-5245.png" alt="香港投資移民" class="img-cover">
                     
                     <p style="margin-top: 15px;"><strong>申請要求：</strong> 18 歲以上，申請前兩年內需絕對擁有不少於 3,000 萬港元淨資產。</p>
                     <p><strong>資金分配：</strong> 2,700 萬投入獲許資產 + 300 萬投入政府創新投資組合。</p>
@@ -196,7 +198,8 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港人才計劃詳解</h2>
-                    <img src="ava_talent_banner.jpg" alt="人才計劃佔位圖片" class="img-placeholder">
+                    
+                    <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="人才計劃" class="img-cover">
                     
                     <h3>三大計劃門檻對比</h3>
                     <table>
@@ -221,7 +224,8 @@
             <div class="card">
                 <div class="card-body">
                     <h2>香港升學全階路徑</h2>
-                    <img src="ava_edu_banner.jpg" alt="教育規劃佔位圖片" class="img-placeholder">
+                    
+                    <img src="https://i.postimg.cc/QdzHsg4R/IMG-5251.jpg" alt="教育規劃" class="img-cover">
                     
                     <h3>中小學教育體系對比</h3>
                     <table>
@@ -246,7 +250,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2>關於 AVA 家族辦公室</h2>
-                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-placeholder">
+                    <img src="ava_brand_banner.jpg" alt="AVA 品牌佔位圖片" class="img-cover" style="border: 1px dashed var(--ava-gold);">
                     <p>AVA 家族辦公室總部位於香港，擁有超過 30 年的財富管理與架構設計經驗。我們專注為高淨值客戶提供從資產隔離、風險對沖到家族傳承的頂層設計。</p>
                     
                     <h3>五大核心業務重點：</h3>
@@ -265,7 +269,7 @@
 
     <div class="footer-tools">
         <button class="btn-tool" style="background: var(--ava-gold); color: white;" onclick="alert('專屬 QR Code 產生中...')">分享首頁入口</button>
-        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.0)')">匯出規劃報告</button>
+        <button class="btn-tool" style="background: var(--ava-blue); color: white;" onclick="alert('檔案匯出成功 (v1.6.2)')">匯出規劃報告</button>
     </div>
 
     <script>
