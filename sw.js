@@ -1,4 +1,4 @@
-const CACHE_NAME = 'jig-pwa-v1.9.0';
+const CACHE_NAME = 'jig-pwa-v1.10.0';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
