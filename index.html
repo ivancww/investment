@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.11.0</title>
+    <title>AVA 留學及移民集團 | Asset Inheritance Planning System Pro v1.12.0</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#002b5e">
     
@@ -63,12 +63,12 @@
         td { border-bottom: 1px solid #eee; padding: 12px 10px; background: #fafafa; vertical-align: middle; }
         tr:last-child td { border-bottom: none; }
         
-        /* 專為中小學對比設計的橫向表格 */
-        .table-responsive { overflow-x: auto; margin-top: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .school-table { min-width: 700px; text-align: center; }
-        .school-table th { background: #eab03e; color: white; font-weight: bold; padding: 10px; text-align: center; }
-        .school-table td { padding: 10px; border: 1px solid #eee; }
-        .school-table .row-title { font-weight: bold; background: #fafafa; }
+        /* 專為中小學對比設計的橫向表格 (統一顏色風格) */
+        .table-responsive { overflow-x: auto; margin-top: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #ddd; }
+        .school-table { min-width: 700px; text-align: center; margin: 0; box-shadow: none; border-radius: 0; }
+        .school-table th { background: var(--ava-blue); color: white; font-weight: bold; padding: 12px 10px; text-align: center; border: 1px solid #32557f; }
+        .school-table td { padding: 12px 10px; border: 1px solid #eee; background: #fff; }
+        .school-table .row-title { font-weight: bold; background: #fdf5e6; color: var(--ava-blue); border-right: 2px solid #eee; }
 
         .process-step { border-left: 2px dashed var(--ava-gold); padding-left: 15px; margin-bottom: 10px; position: relative; }
         .process-step::before { content: '●'; position: absolute; left: -6px; top: 0; color: var(--ava-gold); }
@@ -83,7 +83,7 @@
 
     <header class="header">
         <h1>AVA 留學及移民集團</h1>
-        <p>Asset Inheritance Planning System Pro v1.11.0</p>
+        <p>Asset Inheritance Planning System Pro v1.12.0</p>
     </header>
 
     <nav class="nav-bar">
@@ -188,7 +188,6 @@
                     </div>
 
                     <div class="id-item">
-                        <!-- 已更正為頂級醫療團隊專屬連結 -->
                         <img src="https://i.postimg.cc/R06q0PNT/IMG-5278.jpg" alt="頂級醫療團隊" class="id-icon">
                         <div class="id-text">
                             <p><strong>5. 頂級醫療團隊：</strong> 香港擁有世界級的醫療技術與完善體系，取得身份後即可享受極低收費的公立醫院服務。</p>
@@ -342,7 +341,7 @@
                     
                     <img src="https://i.postimg.cc/Z54LpmJy/IMG-5250.jpg" alt="教育規劃" class="img-cover">
                     
-                    <h3>DSE / 華僑生聯考 / 內地高考 升學率對比</h3>
+                    <h3>DSE / 華僑生聯考 / 內地高考 全面對比</h3>
                     <table>
                         <tr>
                             <th style="width: 22%;">項目</th>
@@ -351,13 +350,25 @@
                             <th>內地高考</th>
                         </tr>
                         <tr>
+                            <td><strong>考試時間</strong></td>
+                            <td>每年 4 月至 5 月</td>
+                            <td>每年 5 月下旬</td>
+                            <td>每年 6 月 7 至 8 日</td>
+                        </tr>
+                        <tr>
+                            <td><strong>大學選擇</strong></td>
+                            <td>香港八大、海外 300+ 所名校、內地 138 所高校 (免試招生)</td>
+                            <td>內地 300+ 所高校 (涵蓋絕大多數 985/211 頂尖學府)</td>
+                            <td>內地所有高校，部分香港/海外高校 (錄取門檻極高)</td>
+                        </tr>
+                        <tr>
                             <td><strong>升學優勢</strong></td>
                             <td>試題難度適中，允許偏科，英文科較深。</td>
                             <td>專為港澳台生設立，題目簡單(約內地高一水平)。</td>
                             <td>千軍萬馬過獨木橋，內卷嚴重。</td>
                         </tr>
                         <tr>
-                            <td><strong>具體升學率<br>(入讀名校)</strong></td>
+                            <td><strong>升學率<br>(入讀名校)</strong></td>
                             <td><strong>極高。</strong><br>港八大錄取率約佔整體考生 <strong>38% - 40%</strong>。</td>
                             <td><strong>極高。</strong><br>錄取率超 <strong>70%-80%</strong>，約400分即可入讀內地 985/211。</td>
                             <td><strong>極低。</strong><br>內地 985 錄取率約 <strong>1%-3%</strong>，211 約 <strong>5%</strong>。</td>
@@ -487,11 +498,11 @@
                     <h2>香港中小學類型對比</h2>
                     <p style="font-size: 0.9em; color: #666;">（表格支援左右滑動查看完整內容）</p>
                     
-                    <!-- 完整還原圖片中的對比表格 -->
+                    <!-- 統一顏色風格的中小學對比表格 -->
                     <div class="table-responsive">
                         <table class="school-table">
                             <tr>
-                                <th style="background: transparent;"></th>
+                                <th style="background: transparent; border-top: none; border-left: none;"></th>
                                 <th>官立中學</th>
                                 <th>津貼中學</th>
                                 <th>直資中學</th>
